@@ -2,9 +2,9 @@
 <script type="text/javascript" src="include/js/viewthread.js?{VERHASH}"></script>
 <script type="text/javascript">zoomstatus = parseInt($zoomstatus);var imagemaxwidth = '{IMAGEMAXWIDTH}';var aimgcount = new Array();</script>
 
-<div id="nav">
+<div id="nav"><div name="convert" id="convert">
 	<!--{if $forumjump == 1}--><a href="$indexname" id="fjump" onmouseover="showMenu(this.id)" class="dropmenu">$bbname</a><!--{else}--><a href="$indexname">$bbname</a><!--{/if}-->$navigation
-</div>
+</div></div>
 
 <!--{if $admode && empty($insenz['hardadstatus']) && !empty($advlist['text'])}--><div class="ad_text" id="ad_text"><table summary="Text Ad" cellpadding="0" cellspacing="1">$advlist[text]</table></div><!--{else}--><div id="ad_text"></div><!--{/if}-->
 <div id="wrap" class="wrap s_clear">

@@ -1,5 +1,5 @@
 {subtemplate header}
-<div id="nav"><a id="fjump" href="$indexname"{if $forumjump == 1} class="dropmenu" onmouseover="showMenu(this.id)"{/if}>$bbname</a> $navigation</div>
+<div id="nav"><div name="convert" id="convert"><a id="fjump" href="$indexname"{if $forumjump == 1} class="dropmenu" onmouseover="showMenu(this.id)"{/if}>$bbname</a> $navigation</div></div>
 
 <!--{if $admode && empty($insenz['hardadstatus']) && !empty($advlist['text'])}-->
 <div id="ad_text" class="ad_text" >
@@ -57,13 +57,13 @@
 						<div id="tabc_1" class="inlinelist titlelist s_clear">
 							<ul>
 							<!--{loop $forum['recommendlist'] $tid $thread}-->
-								<li class="wide"><a href="viewthread.php?tid=$tid" $thread['subjectstyles'] target="_blank">$thread[subject]</a><cite>-<a href="space.php?uid=$thread[authorid]" target="_blank">$thread[author]</a></cite></li>
+								<li class="wide" name="convert" id="convert"><a href="viewthread.php?tid=$tid" $thread['subjectstyles'] target="_blank">$thread[subject]</a><cite>-<a href="space.php?uid=$thread[authorid]" target="_blank">$thread[author]</a></cite></li>
 							<!--{/loop}-->
 							</ul>
 						</div>
 					<!--{/if}-->
 					<!--{if $forum['rules']}-->
-						<div id="tabc_2"{if $forum['recommendlist']} style="display:none"{/if} class="rule">$forum[rules]</div>
+						<div id="tabc_2"{if $forum['recommendlist']} style="display:none"{/if} class="rule"><div name="convert" id="convert">$forum[rules]</div></div>
 					<!--{/if}-->
 				</div>
 			</div>
@@ -233,7 +233,7 @@
 								<!--{/if}-->
 							<!--{/if}-->
 							$thread[sortid] $thread[typeid]
-							<span id="thread_$thread[tid]"><a href="viewthread.php?tid=$thread[tid]&amp;extra=$extra"$thread[highlight]>$thread[subject]</a></span>
+							<span id="thread_$thread[tid]"><a name="convert" id="convert" href="viewthread.php?tid=$thread[tid]&amp;extra=$extra"$thread[highlight]>$thread[subject]</a></span>
 							<!--{if $thread['readperm']}--> - [{lang readperm} <span class="bold">$thread[readperm]</span>]<!--{/if}-->
 							<!--{if $thread['price'] > 0}-->
 								<!--{if $thread['special'] == '3'}-->

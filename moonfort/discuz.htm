@@ -115,7 +115,7 @@
 						<tr>
 							<th$forum[folder]>
 								$forum[icon]
-								<div class="left">
+								<div class="left" name="convert" id="convert">
 								<h2><a href="forumdisplay.php?fid=$forum[fid]" {if $forum[redirect]}target="_blank"{/if}>$forum[name]</a><!--{if $forum[todayposts] && !$forum['redirect']}--><em> ({lang index_today}: <strong>$forum[todayposts]</strong>)</em><!--{/if}--></h2>
 								<!--{if $forum[description]}--><p>$forum[description]</p><!--{/if}-->
 								<!--{if $forum['subforums']}--><p>{lang forum_subforums}: $forum['subforums']</p><!--{/if}-->
@@ -132,7 +132,7 @@
 								<!--{if $forum['redirect']}-->
 									<a href="forumdisplay.php?fid=$forum[fid]">{lang url_link}</a>
 								<!--{elseif is_array($forum['lastpost'])}-->
-									<p><a href="redirect.php?tid=$forum[lastpost][tid]&amp;goto=lastpost#lastpost">{echo cutstr($forum[lastpost][subject], 30)}</a></p>
+									<p><a name="convert" id="convert" href="redirect.php?tid=$forum[lastpost][tid]&amp;goto=lastpost#lastpost">{echo cutstr($forum[lastpost][subject], 30)}</a></p>
 									<cite><!--{if $forum['lastpost']['author']}-->$forum['lastpost']['author']<!--{else}-->{lang anonymous}<!--{/if}--> - $forum[lastpost][dateline]</cite>
 								<!--{else}-->
 									{lang never}
@@ -190,7 +190,7 @@
 		<div id="forumlinks" style="$collapse[forumlinks]">
 		<!--{if $_DCACHE['forumlinks'][0]}-->
 			<div class="forumlinks">
-				<ul class="s_clear">$_DCACHE['forumlinks'][0]</ul>
+				<ul class="s_clear" name="convert" id="convert">$_DCACHE['forumlinks'][0]</ul>
 			</div>
 		<!--{/if}-->
 		<!--{if $_DCACHE['forumlinks'][1]}-->
@@ -200,7 +200,7 @@
 		<!--{/if}-->
 		<!--{if $_DCACHE['forumlinks'][2]}-->
 			<div class="forumtxtlink">
-				<ul class="s_clear">
+				<ul class="s_clear" name="convert" id="convert">
 				$_DCACHE['forumlinks'][2]
 				</ul>
 			</div>
