@@ -252,6 +252,48 @@ if(maxpage > 1) {
 		{/if}
 	}
 }
+
+if (document.getElementsByClassName == undefined) {
+	document.getElementsByClassName = function(className)
+	{
+		var hasClassName = new RegExp("(?:^|\\s)" + className + "(?:$|\\s)");
+		var allElements = document.getElementsByTagName("*");
+		var results = [];
+
+		var element;
+		for (var i = 0; (element = allElements[i]) != null; i++) {
+			var elementClass = element.className;
+			if (elementClass && elementClass.indexOf(className) != -1 && hasClassName.test(elementClass))
+				results.push(element);
+		}
+
+		return results;
+	}
+}
+
+var elems = document.getElementsByClassName('profile')
+for (var i=0; i<elems.length; i++) {
+	var children = elems[i].getElementsByTagName('dd');
+	var body = 0;
+	var spirit = 0;
+	for (var j=0; j<children.length; j++) {
+		if (j == 4) body = parseInt(children[j].innerHTML);
+		if (j == 5) spirit = parseInt(children[j].innerHTML);
+	}
+	var newelem;
+	newelem = document.createElement('dt');
+	newelem.appendChild(document.createTextNode('Max HP'));
+	elems[i].appendChild(newelem);
+	newelem = document.createElement('dd');
+	newelem.appendChild(document.createTextNode(body*3));
+	elems[i].appendChild(newelem);
+	newelem = document.createElement('dt');
+	newelem.appendChild(document.createTextNode('Max MP'));
+	elems[i].appendChild(newelem);
+	newelem = document.createElement('dd');
+	newelem.appendChild(document.createTextNode(spirit*3));
+	elems[i].appendChild(newelem);
+}
 </script>
 </div>
 {subtemplate footer}
