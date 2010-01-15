@@ -163,7 +163,7 @@ function discuzcode($message, $smileyoff, $bbcodeoff, $htmlon = 0, $allowsmilies
 
 		if($parsetype != 1) {
 			if(strpos($msglower, '[/quote]') !== FALSE) {
-				$message = preg_replace("/(\[quote\][\n\r]*.*[\n\r]*)(\[dice\].+\[\/dice\])([\n\r]*.*[\n\r]*\[\/quote\])/ies", "bbcodespecialchars('\\1', '\\2', '\\3')", $message);
+				$message = preg_replace("/(\[quote\][\n\r]*)(.+?)([\n\r]*\[\/quote\])/ies", "bbcodespecialchars('\\1', '\\2', '\\3')", $message);
 				$message = preg_replace("/\s*\[quote\][\n\r]*(.+?)[\n\r]*\[\/quote\]\s*/is", tpl_quote(), $message);
 			}
 			if(strpos($msglower, '[/free]') !== FALSE) {
@@ -364,8 +364,10 @@ function parsedice($number, $side, $modifier, $seed) {
 }
 
 function bbcodespecialchars($before, $code, $after) {
-	$code = str_replace('[dice]', '[', $code);
-	$code = str_replace('[/dice]', ']', $code);
+	while(strpos($code, '[dice]') !== FALSE && strpos($code, '[/dice]') !== FALSE){
+		$code = str_replace('[dice]', '[', $code);
+		$code = str_replace('[/dice]', ']', $code);
+	}
 	return $before.$code.$after;
 }
 
